@@ -6,6 +6,7 @@ import motor_pair
 
 diameter_of_wheel_centimeter = 5.6
 circumference_of_wheel_centimeter = diameter_of_wheel_centimeter * math.pi
+#pair the motors for easier operation
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.B)
 
 async def move(distance=0):
