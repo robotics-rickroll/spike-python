@@ -76,9 +76,17 @@ async def spin_turn(degrees):
     await runloop.until(turn_done)
     motor_pair.stop(drive_motor_pair)
 
+async def move_front_arm(degree, direction):
+    if(direction=="up"):
+        #up is minus degree
+        degree = - abs(degree)
+    else:
+        degree = abs(degree)
+    await motor.run_for_degrees(FRONT_MOTOR_PORT, degree, 720)
+
 async def mission_2():
     #reset arm
-    await motor.run_for_degrees(FRONT_MOTOR_PORT, -150, 720)
+    await move_front_arm(90,"up")
 
     #move
     #await pivot_turn(18)
@@ -89,9 +97,9 @@ async def mission_2():
     await runloop.sleep_ms(500)
 
     #release shark
-    await motor.run_for_degrees(FRONT_MOTOR_PORT, 180, 1000)
+    await move_front_arm(180,"down")
     await runloop.sleep_ms(1000)
-    await motor.run_for_degrees(FRONT_MOTOR_PORT, -180, 720)
+    await move_front_arm(180,"up")
     #come back to base
     await runloop.sleep_ms(500)
     #await move_for_distance(-10)
