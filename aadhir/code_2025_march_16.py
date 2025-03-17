@@ -185,9 +185,9 @@ async def test():
 
 async def collect_everything_2():
     #reset arm
-    await move_back_arm(200,"up")
+    await move_back_arm(180,"up")
     #collect first three objects
-    await move_for_distance(66)
+    await move_for_distance(69)
     #collect krill infront of whale
     await spin_turn(35)
     await move_for_distance(13)
