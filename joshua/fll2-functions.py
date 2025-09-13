@@ -58,7 +58,7 @@ def turn_done():
 
 
 
-async def turn(degrees):
+async def spin_turn(degrees):
     if abs(degrees) > 355: #cannot be used over 355 degrees
         print("Out of range")
         return
