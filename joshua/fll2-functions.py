@@ -12,8 +12,8 @@ import hub
 #
 #
 #
-WHEEL_CIRCUMFERENCE = 17.5
-DISTANCE_BETWEEN_WHEELS = 14.2 #cm - please measure your own robot.
+WHEEL_CIRCUMFERENCE = 27.4
+DISTANCE_BETWEEN_WHEELS = 13 #cm - please measure your own robot.
 #ports underneath
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.C)
 drive_motor_pair = motor_pair.PAIR_1
