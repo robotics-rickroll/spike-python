@@ -11,6 +11,9 @@ motor_pair.pair(motor_pair.PAIR_1, port.A, port.E)
 #convert distance to degree is not part of the project, I just added it just in case
 def convert_distance_to_degree(distance_cm):
     return int((distance_cm/17.5) * 360)
+async def move_for_distance(distance):
+    degrees = convert_distance_to_degrees(distance)
+    move_for_degrees(degrees)
 async def pivot_turn_right(degrees, motor_speed):
     motor_degrees = int((PIVOT_CIRCUMFERENCE/WHEEL_CIRCUMFERENCE) * abs(degrees))
     await motor_pair.move_for_degrees(motor_pair.PAIR_1, motor_degrees, 50, velocity=motor_speed)
