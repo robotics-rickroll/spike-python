@@ -13,7 +13,7 @@ import hub
 #
 #
 WHEEL_CIRCUMFERENCE = 27.4
-DISTANCE_BETWEEN_WHEELS = 13 #cm - please measure your own robot.
+DISTANCE_BETWEEN_WHEELS = 11.4 #cm - please measure your own robot.
 #ports underneath
 motor_pair.pair(motor_pair.PAIR_1, port.A, port.C)
 drive_motor_pair = motor_pair.PAIR_1
@@ -27,7 +27,7 @@ def convert_distance_to_degree(distance_cm):
 
 # input must be in the same unit as WHEEL_CIRCUMFERENCE
 def backward(distance_cm, speed):
-        degrees = convert_distance_to_degree(distance_cm)
+        degrees = convert_distance_to_degree(abs(distance_cm)*-1)
         return motor_pair.move_for_degrees(drive_motor_pair,degrees,0, velocity=speed)
 
 
@@ -78,19 +78,23 @@ async def spin_turn(degrees):
     motor_pair.stop(motor_pair.PAIR_1)
 
 async def turn_left(degrees):
-    await turn(abs(degrees))
+    await spin_turn(abs(degrees))
 
 async def turn_right(degrees):
-    await turn(abs(degrees)*-1 )
+    await spin_turn(abs(degrees)*-1 )
 
 async def arm_up(degrees:int):
     await motor.run_for_degrees(port.B, degrees, 360)
 
 async def arm_down(degrees:int):
-    await motor.run_for_degrees(port.B, degrees*-1, 360)
+    await motor.run_for_degrees(port.B, abs(degrees)*-1, 360)
 
-async def testrun(x,z,y):
-    await forward(x,z)
-    await turn(y)
-
-runloop.run(testrun(1,500,200))
+async def testrun():
+   #await forward(50,400)
+    #await turn_left(90)
+    #await forward(50,400)
+    #await backward(50,400)
+    #await turn_right(90)
+    #await backward(50,400)
+    await arm_down(30)
+runloop.run(testrun())
