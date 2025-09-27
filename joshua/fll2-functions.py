@@ -91,8 +91,12 @@ async def arm_up(degrees:int):
 async def arm_down(degrees:int):
     await motor.run_for_degrees(LEFT_ARM_MOTOR, degrees*2, 360)
 
-async def turn_arm(degrees:int):
-    await motor.run_for_degrees(RIGHT_MOTOR, degrees, 360)
+async def arm_right(degrees:int):
+    await motor.run_for_degrees(RIGHT_MOTOR, abs(degrees), 360)
+
+async def arm_left(degrees:int):
+    await motor.run_for_degrees(RIGHT_MOTOR, abs(degrees)*1, 360)
+
 
 
 async def testrun():
