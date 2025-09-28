@@ -105,4 +105,15 @@ async def testrun():
     await arm_up(90)
     await backward(75, 1000)
  
+async def boulder_mission():
+    await forward(65, 700)
+    await turn_arm(-90)
+    await backward(65, 700)
+
+async def marketplace_flippy_and_boulder_mission():
+    await forward(71,700)
+    await runloop.sleep_ms(100)
+    await turn_arm(-40)
+    await turn_right(5)
+    await backward(71,700)
 runloop.run(testrun())
