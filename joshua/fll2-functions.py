@@ -97,24 +97,11 @@ async def arm_right(degrees:int):
 async def arm_left(degrees:int):
     await motor.run_for_degrees(RIGHT_MOTOR, (abs(degrees)*-1), 360)
 
+async def reset_motor_position(port,degree=0, velocity=360):
+    await motor.run_to_absolute_position(port,degree,velocity)
 
-#start on the 5.75 squares from the left
-async def missions1and2():
-    await arm_down(90)
-    await forward(76,1000)
-    await arm_up(90)
-    await backward(75,1000)
 
-async def boulder_mission():
-    await forward(65, 700)
-    await arm_left(90)
-    await backward(65, 700)
-
-async def marketplace_flippy_and_boulder_mission():
-    await forward(68,700)
-    await runloop.sleep_ms(100)
-    await turn_right(35)
-    await arm_left(70)
-    await backward(71,700)
-
-runloop.run(marketplace_flippy_and_boulder_mission())
+async def testrun():
+    await forward(30)
+    await turn_left(90)
+runloop.run(testrun())
