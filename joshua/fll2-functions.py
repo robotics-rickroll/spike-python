@@ -19,7 +19,7 @@ motor_pair.pair(motor_pair.PAIR_1, port.A, port.C)
 drive_motor_pair = motor_pair.PAIR_1
 default_velocity = 30
 turn_velocity= 100
-LEFT_ARM_MOTOR=port.B
+LEFT_MOTOR=port.B
 RIGHT_MOTOR=port.D
 
 # input must be in the same unit as WHEEL_CIRCUMFERENCE
@@ -28,7 +28,7 @@ def convert_distance_to_degree(distance_cm):
     return int((distance_cm/WHEEL_CIRCUMFERENCE) * 360)
 
 # input must be in the same unit as WHEEL_CIRCUMFERENCE
-def backward(distance_cm, speed):
+def backward(distance_cm, speed=360):
         degrees = convert_distance_to_degree(abs(distance_cm)*-1)
         return motor_pair.move_for_degrees(drive_motor_pair,degrees,0, velocity=speed)
 
@@ -37,8 +37,8 @@ def move_for_distance(distance_cm):
         degrees = convert_distance_to_degree(distance_cm)
         return motor_pair.move_for_degrees(drive_motor_pair,degrees,0)
 
-def forward(distance_cm, speed):
-        degrees = convert_distance_to_degree(distance_cm)
+def forward(distance_cm, speed=360):
+        degrees = convert_distance_to_degree(abs(distance_cm))
         return motor_pair.move_for_degrees(drive_motor_pair,degrees,0, velocity=speed)
 
 
@@ -60,7 +60,7 @@ def turn_done():
 
 
 
-async def spin_turn(degrees):
+async def spin_turn(degrees,speed=200):
     if abs(degrees) > 355: #cannot be used over 355 degrees
         print("Out of range")
         return
@@ -75,30 +75,34 @@ async def spin_turn(degrees):
         stop_angle = (360 - abs(degrees)) if degrees < 0 else (abs(degrees) - 360)
     # set the steering laue based on turn direction
     steering_val = 100 if degrees >= 0 else -100
-    motor_pair.move(motor_pair.PAIR_1, steering_val, velocity=200)
+    motor_pair.move(motor_pair.PAIR_1, steering_val, velocity=speed)
     await runloop.until(turn_done)
     motor_pair.stop(motor_pair.PAIR_1)
 
-async def turn_left(degrees):
-    await spin_turn(abs(degrees))
+async def turn_left(degrees,velocity=200):
+    await spin_turn(abs(degrees)*-1,velocity)
 
-async def turn_right(degrees):
-    await spin_turn(abs(degrees)*-1 )
+async def turn_right(degrees,velocity=200):
+    await spin_turn(abs(degrees),velocity)
 
-async def arm_up(degrees:int):
-    await motor.run_for_degrees(LEFT_ARM_MOTOR, abs(degrees)*-1*2, 360)
+async def arm_up(degrees:int,velocity=360,port=LEFT_MOTOR):
+    await motor.run_for_degrees(port, (abs(degrees)*2), velocity)
 
-async def arm_down(degrees:int):
-    await motor.run_for_degrees(LEFT_ARM_MOTOR, degrees*2, 360)
+async def arm_down(degrees:int,velocity=360,port=LEFT_MOTOR):
+    await motor.run_for_degrees(port, abs(degrees)*2*-1, velocity)
 
-async def arm_right(degrees:int):
-    await motor.run_for_degrees(RIGHT_MOTOR, abs(degrees), 360)
+async def arm_right(degrees:int,velocity=360,port=RIGHT_MOTOR):
+    await motor.run_for_degrees(port, abs(degrees), velocity)
 
-async def arm_left(degrees:int):
-    await motor.run_for_degrees(RIGHT_MOTOR, (abs(degrees)*-1), 360)
+async def arm_left(degrees:int,velocity=360,port=RIGHT_MOTOR ):
+    await motor.run_for_degrees(port, (abs(degrees)*-1), velocity)
 
 async def reset_motor_position(port,degree=0, velocity=360):
     await motor.run_to_absolute_position(port,degree,velocity)
+
+async def spinny_thingie(degrees:int,velocity=360,port=LEFT_MOTOR):
+    await motor.run_for_degrees(port, (abs(degrees)*2), velocity)
+
 
 
 async def testrun():
