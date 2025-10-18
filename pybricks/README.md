@@ -56,6 +56,60 @@ Or install directly from the [Pybricks Runner Marketplace page](https://marketpl
 - If you have connection issues, try reconnecting USB/Bluetooth or restarting VS Code
 - Check the Pybricks Runner extension documentation for more help
 
+
+## 8. Installing `pybricksdev` (Command Line Tool)
+
+`pybricksdev` is a command line tool for advanced users who want to flash firmware, run scripts, or use additional Pybricks features from the terminal.
+
+### Requirements
+- Python 3.10 or higher
+
+### Mac Installation
+1. Make sure you have Python 3.10+ installed. You can use the [official Python installer](https://www.python.org/downloads/) or Homebrew:
+   ```sh
+   brew install python@3.12
+   ```
+2. Install [pipx](https://pipxproject.github.io/pipx/):
+   ```sh
+   brew install pipx
+   pipx ensurepath
+   ```
+3. Run `pybricksdev` using pipx (recommended):
+   ```sh
+   pipx run pybricksdev --help
+   ```
+   Or install it globally with:
+   ```sh
+   pipx install pybricksdev
+   ```
+   Then you can use:
+   ```sh
+   pybricksdev run ...
+   ```
+
+### Windows Installation
+1. Make sure you have Python 3.10+ installed. Download from [python.org](https://www.python.org/downloads/) or the Windows Store.
+2. Open Command Prompt and install pipx:
+   ```bat
+   py -3 -m pip install --upgrade pip
+   py -3 -m pip install pipx
+   py -3 -m pipx ensurepath
+   ```
+3. Run `pybricksdev` using pipx:
+   ```bat
+   py -3 -m pipx run pybricksdev --help
+   ```
+   Or install it globally with:
+   ```bat
+   py -3 -m pipx install pybricksdev
+   ```
+   Then you can use:
+   ```bat
+   pybricksdev run ...
+   ```
+
+For more details and advanced usage, see the [pybricksdev GitHub page](https://github.com/pybricks/pybricksdev).
+
 ## Resources
 - [Pybricks Documentation](https://docs.pybricks.com/)
 - [Pybricks Runner Extension](https://marketplace.visualstudio.com/items?itemName=AnandSingh.pybricks-runner)
