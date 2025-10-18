@@ -10,17 +10,23 @@ import hub
 #turn_right(deegres) and turn_left(deegres) cannot go over 355 deegrees in one turn
 #arm_up(deegres) and arm_down(deegres)
 #
-#
-#
-WHEEL_CIRCUMFERENCE = 27.4
-DISTANCE_BETWEEN_WHEELS = 11.4 #cm - please measure your own robot.
+
+DEFAULT_TURN_SPEED=75
+
+#Small Wheels
+WHEEL_CIRCUMFERENCE = 17.5
+#Big Wheels
+#WHEEL_CIRCUMFERENCE = 27.4
+DISTANCE_BETWEEN_WHEELS = 9.7 # 11.4 #cm - please measure your own robot.
+
 #ports underneath
-motor_pair.pair(motor_pair.PAIR_1, port.A, port.C)
+motor_pair.pair(motor_pair.PAIR_1, port.B, port.F)
 drive_motor_pair = motor_pair.PAIR_1
 default_velocity = 30
 turn_velocity= 100
-LEFT_MOTOR=port.B
-RIGHT_MOTOR=port.D
+LEFT_MOTOR=port.A
+RIGHT_MOTOR=port.E
+
 
 # input must be in the same unit as WHEEL_CIRCUMFERENCE
 def convert_distance_to_degree(distance_cm):
@@ -56,14 +62,16 @@ async def pivot_turn(robot_degrees, motor_speed=turn_velocity):
 # Function that returns true when the absolute yaw angle is 90 degrees
 def turn_done():
     # convert tuple decidegree into same format as in app and blocks
-    return abs(motion_sensor.tilt_angles()[0] * -0.1) > 90
+    return abs(motion_sensor.tilt_angles()[0] * -0.1) > abs(degrees_to_turn)
 
 
 
-async def spin_turn(degrees,speed=200):
+async def spin_turn(degrees,speed=DEFAULT_TURN_SPEED):
     if abs(degrees) > 355: #cannot be used over 355 degrees
         print("Out of range")
         return
+    if speed > 75:
+        print("Higher speed on turn can produce marginal error and turn more!")
     motion_sensor.reset_yaw(0)
     await runloop.until(motion_sensor.stable)
     global degrees_to_turn, stop_angle
@@ -79,10 +87,10 @@ async def spin_turn(degrees,speed=200):
     await runloop.until(turn_done)
     motor_pair.stop(motor_pair.PAIR_1)
 
-async def turn_left(degrees,velocity=200):
+async def turn_left(degrees,velocity=DEFAULT_TURN_SPEED):
     await spin_turn(abs(degrees)*-1,velocity)
 
-async def turn_right(degrees,velocity=200):
+async def turn_right(degrees,velocity=DEFAULT_TURN_SPEED):
     await spin_turn(abs(degrees),velocity)
 
 async def arm_up(degrees:int,velocity=360,port=LEFT_MOTOR):
@@ -103,9 +111,57 @@ async def reset_motor_position(port,degree=0, velocity=360):
 async def spinny_thingie(degrees:int,velocity=360,port=LEFT_MOTOR):
     await motor.run_for_degrees(port, (abs(degrees)*2), velocity)
 
+async def reset_arm(arm):
+    await reset_motor_position(arm)
 
 
-async def testrun():
-    await forward(30)
-    await turn_left(90)
-runloop.run(testrun())
+
+# #start on the 5.75 squares from the left
+# async def missions1and2():
+#    await arm_down(90)
+#    await forward(76,1000)
+#    await arm_up(90)
+#    await backward(75,1000)
+
+# async def boulder_mission():
+#    await forward(65, 700)
+#    await arm_left(90)
+#    await backward(65, 700)
+
+# async def marketplace_flippy_and_boulder_mission():
+#    await forward(68,700)
+#    await runloop.sleep_ms(100)
+#    await turn_right(35)
+#    await arm_left(70)
+#    await backward(71,700)
+
+
+async def main():
+    await reset_arm(LEFT_MOTOR)
+    await reset_arm(RIGHT_MOTOR)
+
+    await forward(30, speed=900)
+    await turn_left(89,150)
+    await forward(10, speed=750)
+    await arm_up(60,velocity=500)
+    await backward(10,speed=750)
+    await turn_right(90)
+    await arm_down(60)
+    await forward(20,speed=750)
+    await spin_turn(-30)
+    await forward(30,speed=750)
+    await arm_up(70,velocity=500)
+    await backward(10,speed=500)
+    await spin_turn(-30)
+    await forward(15,speed=500)
+    await backward(15,speed=500)
+    await spin_turn(60)
+    await backward(80,speed=900)
+
+    # await arm_up(40)
+    # await backward(5)
+    # await spin_turn(-30)
+    # await backward(40)
+
+runloop.run(main())
+
