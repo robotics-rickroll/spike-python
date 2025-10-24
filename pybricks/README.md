@@ -36,7 +36,7 @@ Or install directly from the [Pybricks Runner Marketplace page](https://marketpl
 - Click the Pybricks Runner button in the top right, or use the command palette (`Cmd+Shift+P` or `Ctrl+Shift+P`) and search for `Pybricks: Run`.
 - Follow prompts to select your hub and deploy code
 
-## 6. How to Run the Current Python File with Pybricks Runner (AnandSingh)
+## 6. How to Run the Current Python File with Pybricks Runner
 
 1. Open the `.py` file you want to run in VS Code (for example, `robot.py`).
 2. Make sure your LEGO hub is powered on and connected via USB or Bluetooth.
@@ -110,9 +110,45 @@ Or install directly from the [Pybricks Runner Marketplace page](https://marketpl
 
 For more details and advanced usage, see the [pybricksdev GitHub page](https://github.com/pybricks/pybricksdev).
 
-## Resources
+## Documentation
+
+### Quick Start Documentation
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Print this! One-page cheat sheet for common operations
+- **[API_REFERENCE.md](API_REFERENCE.md)** - Complete function reference with examples
+
+### External Resources
 - [Pybricks Documentation](https://docs.pybricks.com/)
 - [Pybricks Runner Extension](https://marketplace.visualstudio.com/items?itemName=AnandSingh.pybricks-runner)
 - [SPIKE Prime Getting Started](https://docs.pybricks.com/projects/spikeprime/en/latest/)
+
+## Robot Control Quick Start
+
+```python
+#!/usr/bin/env pybricks-micropython
+from robot import *
+
+if __name__ == "__main__":
+    # Check battery
+    check_battery()
+
+    # Reset arms
+    reset_arms()
+    wait(500)
+
+    # Drive to target (with gyro correction)
+    move_straight_gyro(500, DriveSpeed.APPROACH)
+    spin_turn(45)
+
+    # Operate arm
+    left_arm_down(90, ArmSpeed.GRAB)
+    wait(500)
+    left_arm_up(90, ArmSpeed.GRAB)
+
+    # Return home
+    spin_turn(-45)
+    move_straight_gyro(-500, DriveSpeed.RETURN)
+```
+
+See **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** for more examples!
 
 Happy coding with LEGO and Pybricks!
