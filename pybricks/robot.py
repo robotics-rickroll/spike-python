@@ -1892,7 +1892,7 @@ if __name__ == "__main__":
     # competition_ready_check()
 
     # Test basic movements
-    # test_movements()
+    test_movements()
 
     # Test attachments
     # test_attachments()
@@ -1915,7 +1915,7 @@ if __name__ == "__main__":
     # Example mission using speed presets
     # move_straight_gyro(600, DriveSpeed.TRANSIT)   # Fast transit (type-safe!)
     # spin_turn(90)
-    move_straight(-200, DriveSpeed.APPROACH)       # Approach mission
+    #move_straight(-200, DriveSpeed.APPROACH)       # Approach mission
     # move_straight(50, DriveSpeed.PRECISE)         # Final positioning
     # arm_down(90)
     # move_straight(-250, DriveSpeed.RETURN)        # Fast return
