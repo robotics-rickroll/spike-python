@@ -20,19 +20,6 @@ def mission1_Part2():
     spin_turn(90)
     move_straight_gyro(-605, DriveSpeed.PUSHING)
 
-async def boulder_mission():
-    move_straight_gyro(65, DriveSpeed.PUSHING)
-    await arm_left(90)
-    await backward(65, 700)
-
-async def marketplace_flippy_and_boulder_mission():
-    await forward(68,700)
-    await runloop.sleep_ms(100)
-    await turn_right(35)
-    await arm_left(70)
-    await backward(71,700)
-
-
 
 if __name__ == "__main__":
     """
