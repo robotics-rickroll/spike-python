@@ -6,7 +6,12 @@ def missions1and2():
     move_straight_gyro(740, DriveSpeed.PUSHING)
     left_arm_up(180, ArmSpeed.COLLECT)
     wait(500)
-    move_straight_gyro(-740, DriveSpeed.PUSHING)
+    move_straight_gyro(-10, DriveSpeed.PUSHING)
+    spin_turn(-45)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
+    move_straight_gyro(-100, DriveSpeed.PRECISE)
+    spin_turn(45)
+    move_straight_gyro(-730, DriveSpeed.PUSHING)
 
 #start on the 12 squares from the left
 def mission1_Part2():
@@ -40,4 +45,4 @@ if __name__ == "__main__":
     """
 
     #missions1and2()
-    mission1_Part2()
+    missions1and2()
