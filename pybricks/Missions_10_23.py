@@ -25,6 +25,23 @@ def mission1_Part2():
     spin_turn(90)
     move_straight_gyro(-605, DriveSpeed.PUSHING)
 
+#align at square 8
+def missions3():
+    move_straight_gyro(400, DriveSpeed.PUSHING)
+    move_straight_gyro(280, DriveSpeed.PRECISE)
+    spin_turn(90, TurnSpeed.PRECISE)
+    move_straight_gyro(150, DriveSpeed.PUSHING)
+    move_straight_gyro(180, DriveSpeed.PRECISE)
+    spin_turn(-90, TurnSpeed.PRECISE)
+    left_arm_up(300, ArmSpeed.DELICATE)
+    wait(1000)
+    left_arm_down(270, ArmSpeed.DELICATE)
+    spin_turn(90, TurnSpeed.PRECISE)
+    move_straight_gyro(-150, DriveSpeed.PUSHING)
+    move_straight_gyro(-180, DriveSpeed.PRECISE)
+    spin_turn(-90, TurnSpeed.PRECISE)
+    move_straight_gyro(-680, DriveSpeed.PUSHING)
+    
 async def boulder_mission():
     move_straight_gyro(65, DriveSpeed.PUSHING)
     await arm_left(90)
@@ -45,4 +62,5 @@ if __name__ == "__main__":
     """
 
     #missions1and2()
-    missions1and2()
+    #mission1_Part2
+    missions3()
