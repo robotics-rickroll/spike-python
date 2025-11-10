@@ -42,25 +42,47 @@ def missions3():
     spin_turn(-90, TurnSpeed.PRECISE)
     move_straight_gyro(-680, DriveSpeed.PUSHING)
     
-async def boulder_mission():
-    move_straight_gyro(65, DriveSpeed.PUSHING)
-    await arm_left(90)
-    await backward(65, 700)
+#Align at square 2
+def missions12Pull():
+    #reset_arms()
+    move_straight_gyro(450, DriveSpeed.PUSHING)
+    right_arm_down(90, ArmSpeed.COLLECT)
+    wait(500)
+    move_straight_gyro(-50, DriveSpeed.PUSHING)
+    right_arm_up(90, ArmSpeed.COLLECT)
+    move_straight_gyro(-350, DriveSpeed.PUSHING)
 
-async def marketplace_flippy_and_boulder_mission():
-    await forward(68,700)
-    await runloop.sleep_ms(100)
-    await turn_right(35)
-    await arm_left(70)
-    await backward(71,700)
 
+#Align at square 6
+def missions12Push():
+    #reset_arms()
+    move_straight_gyro(550, DriveSpeed.PUSHING)
+    move_straight_gyro(135, DriveSpeed.PRECISE)
+    move_straight_gyro(-100, DriveSpeed.RETURN)
+
+
+def boulder_mission():
+    move_straight_gyro(650, DriveSpeed.PUSHING)
+    left_arm_up(90, ArmSpeed.DELICATE)
+    move_straight_gyro(-650, DriveSpeed.PUSHING)
+    
+#Align at square 6 from left
+def marketplace_flippy_and_boulder_mission():
+    move_straight_gyro(590, DriveSpeed.PUSHING)
+    move_straight_gyro(-100, DriveSpeed.PUSHING)
+    spin_turn(-15, TurnSpeed.ALIGNMENT)
+    move_straight_gyro(200, DriveSpeed.PRECISE)
+    right_arm_down(70, ArmSpeed.DELICATE)
+    #move_straight_gyro(-710, DriveSpeed.PUSHING)
 
 
 if __name__ == "__main__":
     """
     Main execution - run different demos
     """
-
     #missions1and2()
     #mission1_Part2
-    missions3()
+    #missions3()
+    #missions12Pull()
+    #missions12Push()
+    marketplace_flippy_and_boulder_mission()
