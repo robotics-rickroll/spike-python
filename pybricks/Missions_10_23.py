@@ -69,14 +69,14 @@ def boulder_mission():
 #Align at square 6 from left
 def marketplace_flippy_and_boulder_mission():
     
-    move_straight_gyro(600, DriveSpeed.PUSHING)
+    move_straight_gyro(650, DriveSpeed.PUSHING)
     wait(500)
     move_straight_gyro(-100, DriveSpeed.PRECISE)
     spin_turn(-90, TurnSpeed.PRECISE)
-    move_straight_gyro(50, DriveSpeed.PRECISE)
+    move_straight_gyro(10, DriveSpeed.PRECISE)
     spin_turn(+90, TurnSpeed.PRECISE)
-    move_straight_gyro(160, DriveSpeed.PRECISE)
-    right_arm_down(90, ArmSpeed.DELICATE)
+    move_straight_gyro(150, DriveSpeed.PRECISE)
+    left_arm_down(135, ArmSpeed.DELICATE)
     move_straight_gyro(-710, DriveSpeed.PUSHING)
 
 def DisplayFunctions():
@@ -105,5 +105,5 @@ if __name__ == "__main__":
     #missions12Pull()
     #missions12Push()
 
-    hub.display.text("7")
+    hub.display.text("1")
     marketplace_flippy_and_boulder_mission()
