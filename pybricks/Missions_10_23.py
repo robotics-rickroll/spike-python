@@ -75,9 +75,36 @@ def marketplace_flippy_and_boulder_mission():
     spin_turn(-90, TurnSpeed.PRECISE)
     move_straight_gyro(10, DriveSpeed.PRECISE)
     spin_turn(+90, TurnSpeed.PRECISE)
-    move_straight_gyro(150, DriveSpeed.PRECISE)
+    move_straight_gyro(140, DriveSpeed.PRECISE)
     left_arm_down(135, ArmSpeed.DELICATE)
     move_straight_gyro(-710, DriveSpeed.PUSHING)
+    
+#Align at square 6 from left
+def mission9_hit():
+    move_straight_gyro(330, DriveSpeed.APPROACH)
+    turn(-60)
+    move_straight_gyro(112, DriveSpeed.PRECISE)
+    left_arm_down(100, ArmSpeed.DELICATE )
+    move_straight_gyro(-400, ArmSpeed.QUICK)
+
+#Align at square 6 from left
+def mission9_pull():
+    move_straight_gyro(500, DriveSpeed.TRANSIT)
+    turn(-50, TurnSpeed.PRECISE)
+    move_straight_gyro(430, DriveSpeed.PRECISE)     
+    turn(-90, TurnSpeed.PRECISE)
+    move_straight_gyro(50, DriveSpeed.PRECISE)
+    left_arm_down(300, ArmSpeed.PUSH)
+    left_arm_up(300, ArmSpeed.PUSH)
+    move_straight_gyro(-20, DriveSpeed.PRECISE)
+    turn(-60, TurnSpeed.PRECISE)
+    move_straight_gyro(200, DriveSpeed.PRECISE)
+    move_straight_gyro(-100, DriveSpeed.PRECISE)
+    turn(-45, TurnSpeed.PRECISE)
+    move_straight_gyro(280, DriveSpeed.PRECISE)
+    turn(45, TurnSpeed.PRECISE)
+    move_straight_gyro(500, DriveSpeed.TRANSIT)
+    
 
 def DisplayFunctions():
     hub.display.text("Missions 1 and 2")
@@ -105,5 +132,6 @@ if __name__ == "__main__":
     #missions12Pull()
     #missions12Push()
 
-    hub.display.text("1")
-    marketplace_flippy_and_boulder_mission()
+    hub.display.text("67")
+    #marketplace_flippy_and_boulder_mission()
+    mission9_pull()
