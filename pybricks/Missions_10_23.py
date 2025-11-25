@@ -42,10 +42,10 @@ def missions3():
     spin_turn(-90, TurnSpeed.PRECISE)
     move_straight_gyro(-660, DriveSpeed.PUSHING)
     
-#Align at square 2
+#Align at square 1
 def missions12Pull():
-    #reset_arms()
-    move_straight_gyro(450, DriveSpeed.PUSHING)
+    move_straight_gyro(325, DriveSpeed.PUSHING)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
     right_arm_down(90, ArmSpeed.COLLECT)
     wait(500)
     move_straight_gyro(-50, DriveSpeed.PUSHING)
@@ -118,6 +118,18 @@ def DisplayFunctions():
     # Display a sequence of characters, one by one
     #hub.display.scroll("HELLO", on=500, off=2000) # on/off duration in ms
 
+#Align at square 6 from left
+def mission10_pull():
+    move_straight_gyro(200, DriveSpeed.APPROACH)
+    move_straight_gyro(125, DriveSpeed.PRECISE)
+    spin_turn(-90, TurnSpeed.ALIGNMENT)
+    move_straight_gyro(250, DriveSpeed.PRECISE)
+    right_arm_down(100, ArmSpeed.DELICATE)
+    spin_turn(-90, TurnSpeed.ALIGNMENT)
+    move_straight_gyro(70, DriveSpeed.PRECISE)
+    spin_turn(-90, 10)
+    move_straight_gyro(300, DriveSpeed.APPROACH)
+
 
 if __name__ == "__main__":
     """
@@ -134,4 +146,5 @@ if __name__ == "__main__":
 
     hub.display.text("67")
     #marketplace_flippy_and_boulder_mission()
-    mission9_pull()
+    #mission9_pull()
+    #mission10_pull()
