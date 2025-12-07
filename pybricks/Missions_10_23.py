@@ -130,6 +130,14 @@ def mission10_pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
+def mission8():
+    move_straight_gyro(300, DriveSpeed.APPROACH)
+    wait(100)
+    move_straight_gyro(70, DriveSpeed.PRECISE)
+    for _ in range(4):
+        left_arm_down(270, ArmSpeed.QUICK)
+        left_arm_up(270, ArmSpeed.QUICK)
+
 
 if __name__ == "__main__":
     """
@@ -144,7 +152,8 @@ if __name__ == "__main__":
     #missions12Pull()
     #missions12Push()
 
-    hub.display.text("67")
+hub.display.text("67")
+mission8()
     #marketplace_flippy_and_boulder_mission()
     #mission9_pull()
     #mission10_pull()
