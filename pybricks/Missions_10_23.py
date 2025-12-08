@@ -141,6 +141,7 @@ def mission10_pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
+#Align at square 11 form Left or right
 def mission8():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
