@@ -104,7 +104,18 @@ def mission9_pull():
     move_straight_gyro(280, DriveSpeed.PRECISE)
     turn(45, TurnSpeed.PRECISE)
     move_straight_gyro(500, DriveSpeed.TRANSIT)
-    
+
+#Align at 3 squares from left    
+def mission7():
+    move_straight_gyro(650, DriveSpeed.APPROACH)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
+    spin_turn(55, TurnSpeed.ALIGNMENT)
+    wait(500)
+    right_arm_down(425, ArmSpeed.DELICATE)
+    move_straight_gyro(-50, DriveSpeed.PRECISE)
+    right_arm_up(180, ArmSpeed.DELICATE)
+    spin_turn(100, 10)
+    move_straight_gyro(500, DriveSpeed.RETURN)
 
 def DisplayFunctions():
     hub.display.text("Missions 1 and 2")
@@ -152,8 +163,9 @@ if __name__ == "__main__":
     #missions12Pull()
     #missions12Push()
 
-hub.display.text("67")
-mission8()
+    hub.display.text("67")
+    mission8()
+    #mission7()
     #marketplace_flippy_and_boulder_mission()
     #mission9_pull()
     #mission10_pull()
