@@ -1,7 +1,7 @@
 from robot import *
 
 #start on the 6 squares from the left
-def missions1and2():
+def mission1_Brush_2MapReveal():
     #reset_arms()
     move_straight_gyro(740, DriveSpeed.PUSHING)
     left_arm_up(240, ArmSpeed.COLLECT)
@@ -14,7 +14,7 @@ def missions1and2():
     move_straight_gyro(-720, DriveSpeed.PUSHING)
 
 #start on the 12 squares from the left
-def mission1_Part2():
+def mission1_Brush_Pull():
     move_straight_gyro(445, DriveSpeed.PUSHING)
     move_straight_gyro(180, DriveSpeed.PRECISE)
     spin_turn(-90)
@@ -26,7 +26,7 @@ def mission1_Part2():
     move_straight_gyro(-605, DriveSpeed.PUSHING)
 
 #align at square 12
-def missions3():
+def missions3_Minecart_Push():
     move_straight_gyro(400, DriveSpeed.PUSHING)
     move_straight_gyro(270, DriveSpeed.PRECISE)
     spin_turn(90, TurnSpeed.PRECISE)
@@ -43,7 +43,7 @@ def missions3():
     move_straight_gyro(-660, DriveSpeed.PUSHING)
     
 #Align at square 1
-def missions12Pull():
+def missions12_Ship_Sand_Pull():
     move_straight_gyro(325, DriveSpeed.PUSHING)
     move_straight_gyro(100, DriveSpeed.PRECISE)
     right_arm_down(90, ArmSpeed.COLLECT)
@@ -54,7 +54,7 @@ def missions12Pull():
 
 
 #Align at square 6
-def missions12Push():
+def missions12_Ship_Push():
     #reset_arms()
     move_straight_gyro(550, DriveSpeed.PUSHING)
     move_straight_gyro(135, DriveSpeed.PRECISE)
@@ -71,16 +71,16 @@ def marketplace_flippy_and_boulder_mission():
     
     move_straight_gyro(650, DriveSpeed.PUSHING)
     wait(500)
-    move_straight_gyro(-100, DriveSpeed.PRECISE)
-    spin_turn(-90, TurnSpeed.PRECISE)
-    move_straight_gyro(10, DriveSpeed.PRECISE)
-    spin_turn(+90, TurnSpeed.PRECISE)
-    move_straight_gyro(140, DriveSpeed.PRECISE)
+    #move_straight_gyro(-100, DriveSpeed.PRECISE)
+    #spin_turn(-90, TurnSpeed.PRECISE)
+    #move_straight_gyro(10, DriveSpeed.PRECISE)
+    #spin_turn(+90, TurnSpeed.PRECISE)
+    move_straight_gyro(40, DriveSpeed.PRECISE)
     left_arm_down(135, ArmSpeed.DELICATE)
     move_straight_gyro(-710, DriveSpeed.PUSHING)
     
 #Align at square 6 from left
-def mission9_hit():
+def mission9_Market_Raise():
     move_straight_gyro(330, DriveSpeed.APPROACH)
     turn(-60)
     move_straight_gyro(112, DriveSpeed.PRECISE)
@@ -88,7 +88,7 @@ def mission9_hit():
     move_straight_gyro(-400, ArmSpeed.QUICK)
 
 #Align at square 6 from left
-def mission9_pull():
+def mission10_Scale_Down():
     move_straight_gyro(500, DriveSpeed.TRANSIT)
     turn(-50, TurnSpeed.PRECISE)
     move_straight_gyro(430, DriveSpeed.PRECISE)     
@@ -106,11 +106,12 @@ def mission9_pull():
     move_straight_gyro(500, DriveSpeed.TRANSIT)
 
 #Align at 3 squares from left    
-def mission7():
+def mission7_HeavyLifting():
     move_straight_gyro(650, DriveSpeed.APPROACH)
     move_straight_gyro(100, DriveSpeed.PRECISE)
-    spin_turn(55, TurnSpeed.ALIGNMENT)
+    spin_turn(52, TurnSpeed.ALIGNMENT)
     wait(500)
+    left_arm_down(180, ArmSpeed.QUICK)
     right_arm_down(425, ArmSpeed.DELICATE)
     move_straight_gyro(-50, DriveSpeed.PRECISE)
     right_arm_up(180, ArmSpeed.DELICATE)
@@ -130,7 +131,7 @@ def DisplayFunctions():
     #hub.display.scroll("HELLO", on=500, off=2000) # on/off duration in ms
 
 #Align at square 6 from left
-def mission10_pull():
+def mission10_Pan_Pull():
     move_straight_gyro(200, DriveSpeed.APPROACH)
     move_straight_gyro(125, DriveSpeed.PRECISE)
     spin_turn(-90, TurnSpeed.ALIGNMENT)
@@ -141,14 +142,15 @@ def mission10_pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
-#Align at square 11 form Left or right
-def mission8():
+#Align at square 10 form Left
+def mission8_Silo():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
     move_straight_gyro(70, DriveSpeed.PRECISE)
     for _ in range(4):
-        left_arm_down(270, ArmSpeed.QUICK)
-        left_arm_up(270, ArmSpeed.QUICK)
+        left_arm_down(300, ArmSpeed.QUICK)
+        left_arm_up(300, ArmSpeed.QUICK)
+    move_straight_gyro(-300, DriveSpeed.APPROACH)
 
 
 if __name__ == "__main__":
@@ -157,16 +159,17 @@ if __name__ == "__main__":
     """
     hub = PrimeHub()
     #hub.display.text("1")
-    #missions1and2()
+    #mission_Brush_MapReveal()
     #hub.display.text("2-1")
-    #mission1_Part2()
-    #missions3()
-    #missions12Pull()
-    #missions12Push()
+    #mission1_Brush_Pull()
+    #missions3_Minecart_Push()
+    #missions12_Ship_Sand_Pull()
+    #missions12_Ship_Push()
 
-    hub.display.text("67")
-    mission8()
-    #mission7()
-    #marketplace_flippy_and_boulder_mission()
-    #mission9_pull()
-    #mission10_pull()
+    hub.display.text("W")
+    #mission7_HeavyLifting()
+    marketplace_flippy_and_boulder_mission()
+    #mission9_Market_Raise()
+    #mission10_Scale_Down()
+    #mission10_Pan_Pull()
+    #mission8_Silo()
