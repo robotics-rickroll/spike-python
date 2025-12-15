@@ -66,44 +66,52 @@ def boulder_mission():
     left_arm_up(90, ArmSpeed.DELICATE)
     move_straight_gyro(-650, DriveSpeed.PUSHING)
     
-#Align at square 6 from left
-def marketplace_flippy_and_boulder_mission():
+#Align at square 5 from left
+def mission5_StructureFloor():
     
-    move_straight_gyro(650, DriveSpeed.PUSHING)
+    move_straight_gyro(610, DriveSpeed.PUSHING)
     wait(500)
     #move_straight_gyro(-100, DriveSpeed.PRECISE)
     #spin_turn(-90, TurnSpeed.PRECISE)
     #move_straight_gyro(10, DriveSpeed.PRECISE)
     #spin_turn(+90, TurnSpeed.PRECISE)
     move_straight_gyro(40, DriveSpeed.PRECISE)
-    left_arm_down(135, ArmSpeed.DELICATE)
-    move_straight_gyro(-710, DriveSpeed.PUSHING)
+    left_arm_down(160, ArmSpeed.DELICATE)
+    left_arm_up(160, ArmSpeed.DELICATE)
+    move_straight_gyro(-260, DriveSpeed.RETURN)
+    spin_turn(-45, TurnSpeed.QUICK)
+    move_straight_gyro(-300, DriveSpeed.RETURN)
     
 #Align at square 6 from left
 def mission9_Market_Raise():
     move_straight_gyro(330, DriveSpeed.APPROACH)
     turn(-60)
-    move_straight_gyro(112, DriveSpeed.PRECISE)
-    left_arm_down(100, ArmSpeed.DELICATE )
-    move_straight_gyro(-400, ArmSpeed.QUICK)
+    move_straight_gyro(115, DriveSpeed.PRECISE)
+    left_arm_down(100, ArmSpeed.QUICK)
+    move_straight_gyro(-300, DriveSpeed.RETURN)
 
 #Align at square 6 from left
 def mission10_Scale_Down():
-    move_straight_gyro(500, DriveSpeed.TRANSIT)
-    turn(-50, TurnSpeed.PRECISE)
-    move_straight_gyro(430, DriveSpeed.PRECISE)     
+    move_straight_gyro(410, DriveSpeed.TRANSIT)
+    wait(200)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
+    turn(-45, TurnSpeed.PRECISE)
+    move_straight_gyro(230, DriveSpeed.TRANSIT)     
+    wait(200)
+    turn(-45, TurnSpeed.PRECISE)
+    move_straight_gyro(250, DriveSpeed.PRECISE)     
     turn(-90, TurnSpeed.PRECISE)
-    move_straight_gyro(50, DriveSpeed.PRECISE)
     left_arm_down(300, ArmSpeed.PUSH)
     left_arm_up(300, ArmSpeed.PUSH)
-    move_straight_gyro(-20, DriveSpeed.PRECISE)
-    turn(-60, TurnSpeed.PRECISE)
-    move_straight_gyro(200, DriveSpeed.PRECISE)
+    move_straight_gyro(-80, DriveSpeed.PRECISE)
+    turn(-55, TurnSpeed.PRECISE)
+    move_straight_gyro(280, DriveSpeed.PRECISE)
+    wait(200)
     move_straight_gyro(-100, DriveSpeed.PRECISE)
     turn(-45, TurnSpeed.PRECISE)
-    move_straight_gyro(280, DriveSpeed.PRECISE)
-    turn(45, TurnSpeed.PRECISE)
-    move_straight_gyro(500, DriveSpeed.TRANSIT)
+    move_straight_gyro(200, DriveSpeed.RETURN)
+    turn(60, TurnSpeed.PRECISE)
+    move_straight_gyro(500, DriveSpeed.RETURN)
 
 #Align at 3 squares from left    
 def mission7_HeavyLifting():
@@ -168,8 +176,8 @@ if __name__ == "__main__":
 
     hub.display.text("W")
     #mission7_HeavyLifting()
-    marketplace_flippy_and_boulder_mission()
+    #mission5_StructureFloor()
     #mission9_Market_Raise()
-    #mission10_Scale_Down()
+    mission10_Scale_Down()
     #mission10_Pan_Pull()
     #mission8_Silo()
