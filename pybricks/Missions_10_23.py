@@ -115,15 +115,17 @@ def mission10_Scale_Down():
 
 #Align at 3 squares from left    
 def mission7_HeavyLifting():
-    move_straight_gyro(650, DriveSpeed.APPROACH)
+    move_straight_gyro(640, DriveSpeed.APPROACH)
     move_straight_gyro(100, DriveSpeed.PRECISE)
-    spin_turn(52, TurnSpeed.ALIGNMENT)
+    spin_turn(49, TurnSpeed.ALIGNMENT)
     wait(500)
     left_arm_down(180, ArmSpeed.QUICK)
+    left_arm_up(150, ArmSpeed.QUICK)
     right_arm_down(425, ArmSpeed.DELICATE)
-    move_straight_gyro(-50, DriveSpeed.PRECISE)
+    wait(500)
+    move_straight_gyro(-40, DriveSpeed.PRECISE)
     right_arm_up(180, ArmSpeed.DELICATE)
-    spin_turn(100, 10)
+    spin_turn(120, 10)
     move_straight_gyro(500, DriveSpeed.RETURN)
 
 def DisplayFunctions():
@@ -166,6 +168,11 @@ if __name__ == "__main__":
     Main execution - run different demos
     """
     hub = PrimeHub()
+    #hub.display.text("W")
+    #check_battery()
+    #******************
+    # Left Side Missions
+    #******************
     #hub.display.text("1")
     #mission_Brush_MapReveal()
     #hub.display.text("2-1")
@@ -174,10 +181,23 @@ if __name__ == "__main__":
     #missions12_Ship_Sand_Pull()
     #missions12_Ship_Push()
 
-    hub.display.text("W")
-    #mission7_HeavyLifting()
+    #******************
+    # Right Side Missions
+    #******************
+    #Align at square 5 from left - 10 seconds
     #mission5_StructureFloor()
+    
+    #Align at square 6 from left - 7 seconds
     #mission9_Market_Raise()
-    mission10_Scale_Down()
-    #mission10_Pan_Pull()
+    
+    #Align at 3 squares from left    
+    mission7_HeavyLifting()
+    
+    #Align at square 10 form Left
     #mission8_Silo()
+    
+    #Align at square 6 from left
+    #mission10_Scale_Down()
+    
+    #Align at square 6 from left
+    #mission10_Pan_Pull()
