@@ -60,7 +60,7 @@ def missions12_Ship_Push():
     move_straight_gyro(135, DriveSpeed.PRECISE)
     move_straight_gyro(-100, DriveSpeed.RETURN)
 
-
+#Not being used currently
 def boulder_mission():
     move_straight_gyro(650, DriveSpeed.PUSHING)
     left_arm_up(90, ArmSpeed.DELICATE)
@@ -101,17 +101,18 @@ def mission10_Scale_Down():
     turn(-45, TurnSpeed.PRECISE)
     move_straight_gyro(250, DriveSpeed.PRECISE)     
     turn(-90, TurnSpeed.PRECISE)
+    move_straight_gyro(-45, DriveSpeed.PRECISE)
     left_arm_down(300, ArmSpeed.PUSH)
     left_arm_up(300, ArmSpeed.PUSH)
-    move_straight_gyro(-80, DriveSpeed.PRECISE)
-    turn(-55, TurnSpeed.PRECISE)
-    move_straight_gyro(280, DriveSpeed.PRECISE)
+    move_straight_gyro(-25, DriveSpeed.PRECISE)
+    turn(-50, TurnSpeed.PRECISE)
+    move_straight_gyro(300, DriveSpeed.PRECISE)
     wait(200)
-    move_straight_gyro(-100, DriveSpeed.PRECISE)
+    move_straight_gyro(-120, DriveSpeed.PRECISE)
     turn(-45, TurnSpeed.PRECISE)
     move_straight_gyro(200, DriveSpeed.RETURN)
     turn(60, TurnSpeed.PRECISE)
-    move_straight_gyro(500, DriveSpeed.RETURN)
+    move_straight_gyro(600, DriveSpeed.RETURN)
 
 #Align at 3 squares from left    
 def mission7_HeavyLifting():
@@ -146,7 +147,7 @@ def mission10_Pan_Pull():
     move_straight_gyro(125, DriveSpeed.PRECISE)
     spin_turn(-90, TurnSpeed.ALIGNMENT)
     move_straight_gyro(250, DriveSpeed.PRECISE)
-    right_arm_down(100, ArmSpeed.DELICATE)
+    right_arm_down(425, ArmSpeed.DELICATE)
     spin_turn(-90, TurnSpeed.ALIGNMENT)
     move_straight_gyro(70, DriveSpeed.PRECISE)
     spin_turn(-90, 10)
@@ -168,6 +169,48 @@ if __name__ == "__main__":
     Main execution - run different demos
     """
     hub = PrimeHub()
+
+    # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
+    mission_list = ["M1", "M2", "M3", "M4", "M5", "M6"] # Placeholder for demonstration
+
+    # --- Main Menu Logic ---
+    active_index = 0
+    hub.light.on(Color.BLUE) # Indicate menu is ready
+    print(f"Length: {len(mission_list)}")
+
+    # Configure the stop button combination. Now, your program stops
+    # if you press the center and Bluetooth buttons simultaneously.
+    hub.system.set_stop_button((Button.CENTER, Button.BLUETOOTH))
+    # Now we can use the center button as a normal button.
+
+    while True:
+        # Display current selection (optional, could use hub.display)
+        print(f"Selected: {mission_list[active_index]}") # Or hub.display.text(...)
+
+        # Check for button presses
+        pressed_buttons = hub.buttons.pressed()
+
+        if Button.LEFT in pressed_buttons:
+            print("Left button pressed")
+            active_index = (active_index - 1) # Move left, wrap around
+            hub.display.text(mission_list[active_index])
+            hub.light.on(Color.YELLOW) # Feedback
+        elif Button.RIGHT in pressed_buttons:
+            print("Right button pressed")
+            active_index = (active_index + 1) # Move right, wrap around
+            hub.display.text(mission_list[active_index])
+            hub.light.on(Color.GREEN) # Feedback
+
+        elif Button.CENTER in pressed_buttons:
+            print("Center button pressed - launching mission")
+            hub.display.text(mission_list[active_index])
+            print(f"Starting {mission_list[active_index]}...")
+            # Call the actual mission program
+            # mission_list[active_index]() # Uncomment when using actual functions
+
+        # Small delay to prevent rapid-fire button reads (optional but good practice)
+        wait(1000) # milliseconds
+
     #hub.display.text("W")
     #check_battery()
     #******************
@@ -190,14 +233,14 @@ if __name__ == "__main__":
     #Align at square 6 from left - 7 seconds
     #mission9_Market_Raise()
     
-    #Align at 3 squares from left    
-    mission7_HeavyLifting()
+    #Align at 3 squares from left  - 15 seconds  
+    #mission7_HeavyLifting()
     
-    #Align at square 10 form Left
+    #Align at square 10 form Left - 11 seconds
     #mission8_Silo()
     
-    #Align at square 6 from left
+    #Align at square 6 from left - 25 seconds
     #mission10_Scale_Down()
     
-    #Align at square 6 from left
+    #Align at square 6 from left - 12 seconds
     #mission10_Pan_Pull()

@@ -1,9 +1,9 @@
 #!/usr/bin/env pybricks-micropython
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor
-from pybricks.parameters import Port, Direction, Color, Stop
+from pybricks.parameters import Port, Direction, Color, Stop, Button
 from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
+from pybricks.tools import wait, StopWatch, hub_menu
 
 # ============================================================================
 # ROBOT CONFIGURATION CONSTANTS
