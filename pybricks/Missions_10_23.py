@@ -8,10 +8,10 @@ def mission1_Brush_2MapReveal():
     wait(500)
     move_straight_gyro(-10, DriveSpeed.PUSHING)
     spin_turn(-45)
-    move_straight_gyro(80, DriveSpeed.PRECISE)
-    move_straight_gyro(-80, DriveSpeed.PRECISE)
+    move_straight_gyro(90, DriveSpeed.PRECISE)
+    move_straight_gyro(-90, DriveSpeed.PRECISE)
     spin_turn(45)
-    move_straight_gyro(-720, DriveSpeed.PUSHING)
+    move_straight_gyro(-650, DriveSpeed.PUSHING)
 
 #start on the 12 squares from the left
 def mission1_Brush_Pull():
@@ -23,42 +23,48 @@ def mission1_Brush_Pull():
     wait(500)
     move_straight_gyro(-90, DriveSpeed.PRECISE)
     spin_turn(90)
-    move_straight_gyro(-605, DriveSpeed.PUSHING)
+    move_straight_gyro(-580, DriveSpeed.PUSHING)
 
-#align at square 12
+#align at square 6
 def missions3_Minecart_Push():
-    move_straight_gyro(400, DriveSpeed.PUSHING)
-    move_straight_gyro(270, DriveSpeed.PRECISE)
-    spin_turn(90, TurnSpeed.PRECISE)
-    move_straight_gyro(50, DriveSpeed.PUSHING)
+    move_straight_gyro(300, DriveSpeed.PUSHING)
+    move_straight_gyro(120, DriveSpeed.PRECISE)
+    spin_turn(50, TurnSpeed.PRECISE)
+    move_straight_gyro(200, DriveSpeed.PUSHING)
     move_straight_gyro(180, DriveSpeed.PRECISE)
-    spin_turn(-90, TurnSpeed.PRECISE)
+    #spin_turn(-90, TurnSpeed.PRECISE)
     left_arm_up(300, ArmSpeed.DELICATE)
     wait(1000)
     left_arm_down(270, ArmSpeed.DELICATE)
-    spin_turn(90, TurnSpeed.PRECISE)
-    move_straight_gyro(-50, DriveSpeed.PUSHING)
-    move_straight_gyro(-180, DriveSpeed.PRECISE)
-    spin_turn(-90, TurnSpeed.PRECISE)
-    move_straight_gyro(-660, DriveSpeed.PUSHING)
+    move_straight_gyro(-250, DriveSpeed.PUSHING)
+    #move_straight_gyro(-80, DriveSpeed.PRECISE)
+    spin_turn(-45, TurnSpeed.PRECISE)
+    move_straight_gyro(-350, DriveSpeed.PUSHING)
     
-#Align at square 1
+#Align at square 1 - 7 seconds
 def missions12_Ship_Sand_Pull():
     move_straight_gyro(325, DriveSpeed.PUSHING)
     move_straight_gyro(100, DriveSpeed.PRECISE)
-    right_arm_down(90, ArmSpeed.COLLECT)
+    right_arm_down(400, ArmSpeed.COLLECT)
     wait(500)
     move_straight_gyro(-50, DriveSpeed.PUSHING)
     right_arm_up(90, ArmSpeed.COLLECT)
-    move_straight_gyro(-350, DriveSpeed.PUSHING)
+    move_straight_gyro(-250, DriveSpeed.PUSHING)
 
 
-#Align at square 6
+#Align at square 7 - 12 seconds
 def missions12_Ship_Push():
     #reset_arms()
     move_straight_gyro(550, DriveSpeed.PUSHING)
     move_straight_gyro(135, DriveSpeed.PRECISE)
-    move_straight_gyro(-100, DriveSpeed.RETURN)
+    wait(200)
+    move_straight_gyro(-50, DriveSpeed.RETURN)
+    spin_turn(-60)
+    move_straight_gyro(50, DriveSpeed.RETURN)
+    spin_turn(62)
+    move_straight_gyro(950, DriveSpeed.RETURN)
+    #spin_turn(10)
+    #move_straight_gyro(450, DriveSpeed.RETURN)
 
 #Not being used currently
 def boulder_mission():
@@ -153,7 +159,7 @@ def mission10_Pan_Pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
-#Align at square 10 form Left
+#Align at square 10 from Left
 def mission8_Silo():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
@@ -163,27 +169,8 @@ def mission8_Silo():
         left_arm_up(300, ArmSpeed.QUICK)
     move_straight_gyro(-300, DriveSpeed.APPROACH)
 
-
-if __name__ == "__main__":
-    """
-    Main execution - run different demos
-    """
-    hub = PrimeHub()
-
-    # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
-    mission_list = ["M1", "M2", "M3", "M4", "M5", "M6"] # Placeholder for demonstration
-
-    # --- Main Menu Logic ---
-    active_index = 0
-    hub.light.on(Color.BLUE) # Indicate menu is ready
-    print(f"Length: {len(mission_list)}")
-
-    # Configure the stop button combination. Now, your program stops
-    # if you press the center and Bluetooth buttons simultaneously.
-    hub.system.set_stop_button((Button.CENTER, Button.BLUETOOTH))
-    # Now we can use the center button as a normal button.
-
-    while True:
+def test_buttons():
+     while True:
         # Display current selection (optional, could use hub.display)
         print(f"Selected: {mission_list[active_index]}") # Or hub.display.text(...)
 
@@ -211,18 +198,48 @@ if __name__ == "__main__":
         # Small delay to prevent rapid-fire button reads (optional but good practice)
         wait(1000) # milliseconds
 
+   
+
+if __name__ == "__main__":
+    """
+    Main execution - run different demos
+    """
+    hub = PrimeHub()
+
+    # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
+    mission_list = ["M1", "M2", "M3", "M4", "M5", "M6"] # Placeholder for demonstration
+
+    # --- Main Menu Logic ---
+    active_index = 0
+    hub.light.on(Color.BLUE) # Indicate menu is ready
+    print(f"Length: {len(mission_list)}")
+
+    # Configure the stop button combination. Now, your program stops
+    # if you press the center and Bluetooth buttons simultaneously.
+    hub.system.set_stop_button((Button.CENTER, Button.BLUETOOTH))
+    # Now we can use the center button as a normal button.
+
     #hub.display.text("W")
     #check_battery()
     #******************
     # Left Side Missions
     #******************
     #hub.display.text("1")
-    #mission_Brush_MapReveal()
-    #hub.display.text("2-1")
+    
+    #start on the 6 squares from the left - 11 seconds
+    #mission1_Brush_2MapReveal()
+
+    #start on the 12 squares from the left - 10 seconds
     #mission1_Brush_Pull()
+    
+    #align at square 6 - 12 seconds
     #missions3_Minecart_Push()
+    
+    #Align at square 1 - 7 seconds
     #missions12_Ship_Sand_Pull()
-    #missions12_Ship_Push()
+    
+    #Align at square 7 - 12 seconds
+    missions12_Ship_Push()
 
     #******************
     # Right Side Missions
