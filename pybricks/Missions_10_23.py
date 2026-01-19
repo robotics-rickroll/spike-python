@@ -1,5 +1,7 @@
 from robot import *
 
+run_missions = False
+
 #start on the 6 squares from the left
 def mission1_Brush_2MapReveal():
     #reset_arms()
@@ -169,36 +171,135 @@ def mission8_Silo():
         left_arm_up(300, ArmSpeed.QUICK)
     move_straight_gyro(-300, DriveSpeed.APPROACH)
 
-def test_buttons():
-     while True:
+def run_missions_with_buttons():
+    # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
+    mission_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B"] # Placeholder for demonstration
+
+    # --- Main Menu Logic ---
+    active_index = 0
+
+    print(f"Length: {len(mission_list)}")
+
+
+    while True:
         # Display current selection (optional, could use hub.display)
-        print(f"Selected: {mission_list[active_index]}") # Or hub.display.text(...)
+        #print(f"Selected: {mission_list[active_index]}") # Or hub.display.text(...)
 
         # Check for button presses
         pressed_buttons = hub.buttons.pressed()
 
         if Button.LEFT in pressed_buttons:
+            print("******************************************")
             print("Left button pressed")
-            active_index = (active_index - 1) # Move left, wrap around
+            if active_index > 0:
+                active_index = (active_index - 1) # Move left, wrap around
             hub.display.text(mission_list[active_index])
             hub.light.on(Color.YELLOW) # Feedback
+            print(f"Mission changed to {mission_list[active_index]}...")
         elif Button.RIGHT in pressed_buttons:
+            print("******************************************")
             print("Right button pressed")
-            active_index = (active_index + 1) # Move right, wrap around
+            if active_index < len(mission_list) - 1:
+                active_index = (active_index + 1) # Move right, wrap around
             hub.display.text(mission_list[active_index])
-            hub.light.on(Color.GREEN) # Feedback
-
+            hub.light.on(Color.ORANGE) # Feedback
+            print(f"Mission changed to {mission_list[active_index]}...")
         elif Button.CENTER in pressed_buttons:
+            print("******************************************")
             print("Center button pressed - launching mission")
             hub.display.text(mission_list[active_index])
             print(f"Starting {mission_list[active_index]}...")
-            # Call the actual mission program
-            # mission_list[active_index]() # Uncomment when using actual functions
+            mission_function_name = f"mission_{mission_list[active_index]}"
+            if mission_function_name in globals():
+                mission_function = globals().get(f"mission_{mission_list[active_index]}")
+                hub.light.on(Color.GREEN) # Feedback
+                # Call the actual mission program
+                mission_function()
+                #Increment to next mission after completion
+                active_index = active_index + 1
+                #Show next mission on hub display
+                hub.display.text(mission_list[active_index])
+            else:
+                print(f"Mission function {mission_function_name} not found.")
+                hub.display.text("E")
+                hub.light.on(Color.RED) # Feedback
 
         # Small delay to prevent rapid-fire button reads (optional but good practice)
-        wait(1000) # milliseconds
+        wait(20) # milliseconds
 
-   
+def mission_1():
+    print("Running mission 1")
+    if run_missions == True:
+        mission1_Brush_2MapReveal()
+
+def mission_2():
+    print("Running mission 2")
+    if run_missions == True:
+        mission1_Brush_Pull()
+
+def mission_3():
+    print("Running mission 3")
+    if run_missions == True:
+        missions3_Minecart_Push()
+
+def mission_4():
+    print("Running mission 4")
+    if run_missions == True:
+        missions12_Ship_Sand_Pull()
+
+def mission_5():
+    print("Running mission 5")
+    if run_missions == True:
+        missions12_Ship_Push()
+
+def mission_6():
+    print("Running mission 6")
+    if run_missions == True:
+        mission7_HeavyLifting()
+
+def mission_7():
+    print("Running mission 7")
+    if run_missions == True:
+        mission5_StructureFloor()
+
+def mission_8():
+    print("Running mission 8")
+    if run_missions == True:
+        mission9_Market_Raise()
+
+def mission_9():
+    print("Running mission 9")
+    if run_missions == True:
+        mission8_Silo()
+
+def mission_A():
+    print("Running mission A")
+    if run_missions == True:
+        mission10_Scale_Down()
+
+def mission_B():
+    print("Running mission B")
+    if run_missions == True:
+        mission10_Pan_Pull()
+
+
+def wait_for_launch():
+    # Clear any previous button presses
+    while hub.buttons.pressed():
+        wait(10)
+    # Wait until a button is pressed to start
+    while not hub.buttons.pressed():
+        wait(10)
+    # Wait for release to prevent accidental double-starts
+    while hub.buttons.pressed():
+        wait(10)
+
+def launch_missions():
+    mission_1()
+    wait_for_launch()
+    mission_2()
+    wait_for_launch()
+    mission_3()
 
 if __name__ == "__main__":
     """
@@ -206,23 +307,23 @@ if __name__ == "__main__":
     """
     hub = PrimeHub()
 
-    # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
-    mission_list = ["M1", "M2", "M3", "M4", "M5", "M6"] # Placeholder for demonstration
-
-    # --- Main Menu Logic ---
-    active_index = 0
     hub.light.on(Color.BLUE) # Indicate menu is ready
-    print(f"Length: {len(mission_list)}")
 
     # Configure the stop button combination. Now, your program stops
     # if you press the center and Bluetooth buttons simultaneously.
     hub.system.set_stop_button((Button.CENTER, Button.BLUETOOTH))
     # Now we can use the center button as a normal button.
 
+    # test changing missions by pressing left, and right and launching by center button
+    run_missions_with_buttons()
+
+    #launch_missions()
+
     #hub.display.text("W")
     #check_battery()
     #******************
-    # Left Side Missions
+    # Left Side Missions - 52 seconds without attachment change or alignments
+    # 5 missions - 4 attachment changes or alignments
     #******************
     #hub.display.text("1")
     
@@ -239,20 +340,22 @@ if __name__ == "__main__":
     #missions12_Ship_Sand_Pull()
     
     #Align at square 7 - 12 seconds
-    missions12_Ship_Push()
+    #missions12_Ship_Push()
 
     #******************
-    # Right Side Missions
+    # Right Side Missions - 80 seconds without attachment change or alignments
+    # 6 missions - 6 attachment changes or alignments
     #******************
+
+    #Align at 3 squares from left  - 15 seconds  
+    #mission7_HeavyLifting()
+
     #Align at square 5 from left - 10 seconds
     #mission5_StructureFloor()
     
     #Align at square 6 from left - 7 seconds
     #mission9_Market_Raise()
-    
-    #Align at 3 squares from left  - 15 seconds  
-    #mission7_HeavyLifting()
-    
+        
     #Align at square 10 form Left - 11 seconds
     #mission8_Silo()
     
