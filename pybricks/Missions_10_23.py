@@ -1,6 +1,6 @@
 from robot import *
 
-run_missions = False
+run_missions = True
 
 #start on the 6 squares from the left
 def mission1_Brush_2MapReveal():
@@ -161,7 +161,7 @@ def mission10_Pan_Pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
-#Align at square 10 from Left
+#Align at square 11 from Left
 def mission8_Silo():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
@@ -327,19 +327,19 @@ if __name__ == "__main__":
     #******************
     #hub.display.text("1")
     
-    #start on the 6 squares from the left - 11 seconds
+    #start on the 6 squares from the left - 11 seconds - 40 points
     #mission1_Brush_2MapReveal()
 
-    #start on the 12 squares from the left - 10 seconds
+    #start on the 12 squares from the left - 10 seconds - 10 points
     #mission1_Brush_Pull()
     
-    #align at square 6 - 12 seconds
+    #align at square 6 - 12 seconds - 30 points
     #missions3_Minecart_Push()
     
-    #Align at square 1 - 7 seconds
+    #Align at square 1 - 7 seconds - 20 points
     #missions12_Ship_Sand_Pull()
     
-    #Align at square 7 - 12 seconds
+    #Align at square 7 - 12 seconds - 10 points
     #missions12_Ship_Push()
 
     #******************
@@ -347,20 +347,20 @@ if __name__ == "__main__":
     # 6 missions - 6 attachment changes or alignments
     #******************
 
-    #Align at 3 squares from left  - 15 seconds  
+    #Align at 3 squares from left  - 15 seconds - 60 points
     #mission7_HeavyLifting()
 
-    #Align at square 5 from left - 10 seconds
+    #Align at square 5 from left - 10 seconds - 30 points
     #mission5_StructureFloor()
     
-    #Align at square 6 from left - 7 seconds
+    #Align at square 6 from left - 7 seconds - 10 points
     #mission9_Market_Raise()
         
-    #Align at square 10 form Left - 11 seconds
+    #Align at square 11 form Left - 11 seconds - 30 points
     #mission8_Silo()
     
-    #Align at square 6 from left - 25 seconds
+    #Align at square 6 from left - 25 seconds - 40 points
     #mission10_Scale_Down()
     
-    #Align at square 6 from left - 12 seconds
+    #Align at square 6 from left - 12 seconds - 10 points
     #mission10_Pan_Pull()
