@@ -13,57 +13,59 @@ def mission1_Brush_2MapReveal():
     move_straight_gyro(90, DriveSpeed.PRECISE)
     move_straight_gyro(-90, DriveSpeed.PRECISE)
     spin_turn(45)
-    move_straight_gyro(-650, DriveSpeed.PUSHING)
+    move_straight_gyro(-650, DriveSpeed.RETURN)
 
 #start on the 12 squares from the left
 def mission1_Brush_Pull():
-    move_straight_gyro(445, DriveSpeed.PUSHING)
-    move_straight_gyro(180, DriveSpeed.PRECISE)
+    move_straight_gyro(480, DriveSpeed.PUSHING)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
     spin_turn(-90)
-    move_straight_gyro(90, DriveSpeed.PRECISE)
+    move_straight_gyro(80, DriveSpeed.PRECISE)
     left_arm_up(180, ArmSpeed.COLLECT)
-    wait(500)
-    move_straight_gyro(-90, DriveSpeed.PRECISE)
-    spin_turn(90)
-    move_straight_gyro(-580, DriveSpeed.PUSHING)
+    wait(200)
+    move_straight_gyro(-60, DriveSpeed.PRECISE)
+    spin_turn(100)
+    move_straight_gyro(-580, DriveSpeed.RETURN)
 
 #align at square 6
 def missions3_Minecart_Push():
-    move_straight_gyro(300, DriveSpeed.PUSHING)
+    move_straight_gyro(315, DriveSpeed.PUSHING)
     move_straight_gyro(120, DriveSpeed.PRECISE)
     spin_turn(50, TurnSpeed.PRECISE)
     move_straight_gyro(200, DriveSpeed.PUSHING)
     move_straight_gyro(180, DriveSpeed.PRECISE)
+    wait(200)
     #spin_turn(-90, TurnSpeed.PRECISE)
     left_arm_up(300, ArmSpeed.DELICATE)
-    wait(1000)
-    left_arm_down(270, ArmSpeed.DELICATE)
-    move_straight_gyro(-250, DriveSpeed.PUSHING)
+    wait(1500)
+    left_arm_down(270, ArmSpeed.QUICK)
+    move_straight_gyro(-250, DriveSpeed.RETURN)
     #move_straight_gyro(-80, DriveSpeed.PRECISE)
     spin_turn(-45, TurnSpeed.PRECISE)
-    move_straight_gyro(-350, DriveSpeed.PUSHING)
+    move_straight_gyro(-350, DriveSpeed.RETURN)
     
 #Align at square 1 - 7 seconds
 def missions12_Ship_Sand_Pull():
-    move_straight_gyro(325, DriveSpeed.PUSHING)
+    move_straight_gyro(360, DriveSpeed.RETURN)
     move_straight_gyro(100, DriveSpeed.PRECISE)
-    right_arm_down(400, ArmSpeed.COLLECT)
+    right_arm_down(450, ArmSpeed.QUICK)
+    wait(200)
+    move_straight_gyro(-50, DriveSpeed.RETURN)
     wait(500)
-    move_straight_gyro(-50, DriveSpeed.PUSHING)
-    right_arm_up(90, ArmSpeed.COLLECT)
-    move_straight_gyro(-250, DriveSpeed.PUSHING)
+    right_arm_up(400, ArmSpeed.QUICK)
+    move_straight_gyro(-250, DriveSpeed.RETURN)
 
 
 #Align at square 7 - 12 seconds
 def missions12_Ship_Push():
     #reset_arms()
-    move_straight_gyro(550, DriveSpeed.PUSHING)
-    move_straight_gyro(135, DriveSpeed.PRECISE)
+    move_straight_gyro(550, DriveSpeed.RETURN)
+    move_straight_gyro(135, DriveSpeed.PUSHING)
     wait(200)
     move_straight_gyro(-50, DriveSpeed.RETURN)
-    spin_turn(-60)
+    spin_turn(-70)
     move_straight_gyro(50, DriveSpeed.RETURN)
-    spin_turn(62)
+    spin_turn(70)
     move_straight_gyro(950, DriveSpeed.RETURN)
     #spin_turn(10)
     #move_straight_gyro(450, DriveSpeed.RETURN)
@@ -74,7 +76,7 @@ def boulder_mission():
     left_arm_up(90, ArmSpeed.DELICATE)
     move_straight_gyro(-650, DriveSpeed.PUSHING)
     
-#Align at square 5 from left
+#Align at square 3 from left
 def mission5_StructureFloor():
     
     move_straight_gyro(610, DriveSpeed.PUSHING)
@@ -350,7 +352,7 @@ if __name__ == "__main__":
     #Align at 3 squares from left  - 15 seconds - 60 points
     #mission7_HeavyLifting()
 
-    #Align at square 5 from left - 10 seconds - 30 points
+    #Align at square 3 from left - 10 seconds - 30 points
     #mission5_StructureFloor()
     
     #Align at square 6 from left - 7 seconds - 10 points
