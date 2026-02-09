@@ -47,7 +47,7 @@ def missions3_Minecart_Push():
 #Align at square 1 - 7 seconds
 def missions12_Ship_Sand_Pull():
     move_straight_gyro(360, DriveSpeed.RETURN)
-    move_straight_gyro(100, DriveSpeed.PRECISE)
+    move_straight_gyro(110, DriveSpeed.PRECISE)
     right_arm_down(450, ArmSpeed.QUICK)
     wait(200)
     move_straight_gyro(-50, DriveSpeed.RETURN)
@@ -55,10 +55,8 @@ def missions12_Ship_Sand_Pull():
     right_arm_up(400, ArmSpeed.QUICK)
     move_straight_gyro(-250, DriveSpeed.RETURN)
 
-
 #Align at square 7 - 12 seconds
 def missions12_Ship_Push():
-    #reset_arms()
     move_straight_gyro(550, DriveSpeed.RETURN)
     move_straight_gyro(135, DriveSpeed.PUSHING)
     wait(200)
@@ -69,6 +67,29 @@ def missions12_Ship_Push():
     move_straight_gyro(950, DriveSpeed.RETURN)
     #spin_turn(10)
     #move_straight_gyro(450, DriveSpeed.RETURN)
+
+#Align at square 7.5 - ?? seconds
+def missions12_Ship_Scale_Roof():
+    move_straight_gyro(550, DriveSpeed.RETURN)
+    move_straight_gyro(135, DriveSpeed.PUSHING)
+    wait(200)
+    move_straight_gyro(-50, DriveSpeed.RETURN)
+    spin_turn(-53, TurnSpeed.STANDARD)
+    move_straight_gyro(400, DriveSpeed.RETURN)
+    move_straight_gyro(120, DriveSpeed.APPROACH)
+    left_arm_down(200, ArmSpeed.QUICK)
+    left_arm_up(200, ArmSpeed.QUICK)
+    move_straight_gyro(220, DriveSpeed.APPROACH)
+    spin_turn(90, TurnSpeed.STANDARD)
+    move_straight_gyro(190, DriveSpeed.APPROACH)
+    wait(200)
+    move_straight_gyro(-120, DriveSpeed.PRECISE)
+    turn(-45, TurnSpeed.PRECISE)
+    move_straight_gyro(180, DriveSpeed.RETURN)
+    turn(60, TurnSpeed.PRECISE)
+    move_straight_gyro(600, DriveSpeed.RETURN)
+
+
 
 #Not being used currently
 def boulder_mission():
@@ -317,7 +338,9 @@ if __name__ == "__main__":
     # Now we can use the center button as a normal button.
 
     # test changing missions by pressing left, and right and launching by center button
-    run_missions_with_buttons()
+    #run_missions_with_buttons()
+
+    missions12_Ship_Scale_Roof()
 
     #launch_missions()
 
@@ -341,8 +364,10 @@ if __name__ == "__main__":
     #Align at square 1 - 7 seconds - 20 points
     #missions12_Ship_Sand_Pull()
     
-    #Align at square 7 - 12 seconds - 10 points
+    #Align at square 7.5 - 12 seconds - 10 points
     #missions12_Ship_Push()
+    #Align at square 7.5 - 17 seconds - 60 points
+    #missions12_Ship_Scale_Roof()
 
     #******************
     # Right Side Missions - 80 seconds without attachment change or alignments
