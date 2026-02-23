@@ -182,8 +182,8 @@ def mission10_Pan_Pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
-#Align at square 8 from Left
-def mission8_Silo():
+#Align at square 7.5 from Left
+def mission8_Silo_Market_Structure():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
     move_straight_gyro(70, DriveSpeed.PRECISE)
@@ -209,6 +209,16 @@ def mission8_Silo():
     move_straight_gyro(-180, DriveSpeed.RETURN)
     spin_turn(-15, TurnSpeed.QUICK)
     move_straight_gyro(-310, DriveSpeed.RETURN)
+
+#Align at square 7.5 from Left
+def mission8_Silo():
+    move_straight_gyro(300, DriveSpeed.APPROACH)
+    wait(100)
+    move_straight_gyro(70, DriveSpeed.PRECISE)
+    for _ in range(4):
+        left_arm_down(300, ArmSpeed.QUICK)
+        left_arm_up(300, ArmSpeed.QUICK)
+    move_straight_gyro(-300, DriveSpeed.APPROACH)
 
 def run_missions_with_buttons():
     # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
@@ -289,7 +299,7 @@ def mission_4():
 def mission_5():
     print("Running mission 5")
     if run_missions == True:
-        missions12_Ship_Push()
+        missions12_Ship_Scale_Roof()
 
 def mission_6():
     print("Running mission 6")
@@ -299,12 +309,12 @@ def mission_6():
 def mission_7():
     print("Running mission 7")
     if run_missions == True:
-        mission5_StructureFloor()
+        mission8_Silo_Market_Structure()
 
 def mission_8():
     print("Running mission 8")
     if run_missions == True:
-        mission9_Market_Raise()
+        mission10_Pan_Pull()
 
 def mission_9():
     print("Running mission 9")
@@ -399,8 +409,8 @@ if __name__ == "__main__":
     #Align at square 3 from left - 10 seconds - 30 points
     #mission5_StructureFloor()
     
-    #Align at square 8.5 from Left - 11 seconds - 30 points
-    mission8_Silo()
+    #Align at square 7.5 from Left - 17 seconds - 30 points
+    mission8_Silo_Market_Structure()
     
     #Align at square 6 from left - 25 seconds - 40 points
     #mission10_Scale_Down()
