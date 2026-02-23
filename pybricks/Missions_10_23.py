@@ -191,19 +191,24 @@ def mission8_Silo():
         right_arm_down(400, ArmSpeed.QUICK)
         right_arm_up(400, ArmSpeed.QUICK)
     #move_straight_gyro(-300, DriveSpeed.APPROACH)
-    # Move top Structure floor
+    # Move to Market Wares
     left_arm_up(60, ArmSpeed.DELICATE)
-    spin_turn(-60, TurnSpeed.STANDARD)
-    move_straight_gyro(100, DriveSpeed.PRECISE)
-    spin_turn(60, TurnSpeed.STANDARD)
-    move_straight_gyro(190, DriveSpeed.PUSHING)
+    spin_turn(-70, TurnSpeed.PRECISE)
+    move_straight_gyro(120, DriveSpeed.PRECISE)
+    left_arm_down(240, ArmSpeed.MODERATE)
+    move_straight_gyro(-10, DriveSpeed.PRECISE)
+    left_arm_up(240, ArmSpeed.MODERATE)
+    # Move top Structure floor
+    spin_turn(70, TurnSpeed.PRECISE)
+    wait(200)
+    move_straight_gyro(200, DriveSpeed.PUSHING)
     wait(200)
     move_straight_gyro(25, DriveSpeed.PRECISE)
     left_arm_down(160, ArmSpeed.DELICATE)
     left_arm_up(160, ArmSpeed.DELICATE)
-    move_straight_gyro(-260, DriveSpeed.RETURN)
+    move_straight_gyro(-180, DriveSpeed.RETURN)
     spin_turn(-15, TurnSpeed.QUICK)
-    move_straight_gyro(-300, DriveSpeed.RETURN)
+    move_straight_gyro(-310, DriveSpeed.RETURN)
 
 def run_missions_with_buttons():
     # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
