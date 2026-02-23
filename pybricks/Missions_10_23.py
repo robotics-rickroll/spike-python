@@ -89,8 +89,6 @@ def missions12_Ship_Scale_Roof():
     turn(60, TurnSpeed.PRECISE)
     move_straight_gyro(600, DriveSpeed.RETURN)
 
-
-
 #Not being used currently
 def boulder_mission():
     move_straight_gyro(650, DriveSpeed.PUSHING)
@@ -184,15 +182,28 @@ def mission10_Pan_Pull():
     spin_turn(-90, 10)
     move_straight_gyro(300, DriveSpeed.APPROACH)
 
-#Align at square 11 from Left
+#Align at square 8 from Left
 def mission8_Silo():
     move_straight_gyro(300, DriveSpeed.APPROACH)
     wait(100)
     move_straight_gyro(70, DriveSpeed.PRECISE)
     for _ in range(4):
-        left_arm_down(300, ArmSpeed.QUICK)
-        left_arm_up(300, ArmSpeed.QUICK)
-    move_straight_gyro(-300, DriveSpeed.APPROACH)
+        right_arm_down(400, ArmSpeed.QUICK)
+        right_arm_up(400, ArmSpeed.QUICK)
+    #move_straight_gyro(-300, DriveSpeed.APPROACH)
+    # Move top Structure floor
+    left_arm_up(60, ArmSpeed.DELICATE)
+    spin_turn(-60, TurnSpeed.STANDARD)
+    move_straight_gyro(100, DriveSpeed.PRECISE)
+    spin_turn(60, TurnSpeed.STANDARD)
+    move_straight_gyro(190, DriveSpeed.PUSHING)
+    wait(200)
+    move_straight_gyro(25, DriveSpeed.PRECISE)
+    left_arm_down(160, ArmSpeed.DELICATE)
+    left_arm_up(160, ArmSpeed.DELICATE)
+    move_straight_gyro(-260, DriveSpeed.RETURN)
+    spin_turn(-15, TurnSpeed.QUICK)
+    move_straight_gyro(-300, DriveSpeed.RETURN)
 
 def run_missions_with_buttons():
     # mission_list = [mission1, mission2, mission3] # Your actual mission functions/files
@@ -340,7 +351,7 @@ if __name__ == "__main__":
     # test changing missions by pressing left, and right and launching by center button
     #run_missions_with_buttons()
 
-    missions12_Ship_Scale_Roof()
+    #missions12_Ship_Scale_Roof()
 
     #launch_missions()
 
@@ -377,14 +388,14 @@ if __name__ == "__main__":
     #Align at 3 squares from left  - 15 seconds - 60 points
     #mission7_HeavyLifting()
 
-    #Align at square 3 from left - 10 seconds - 30 points
-    #mission5_StructureFloor()
-    
     #Align at square 6 from left - 7 seconds - 10 points
     #mission9_Market_Raise()
         
-    #Align at square 11 form Left - 11 seconds - 30 points
-    #mission8_Silo()
+    #Align at square 3 from left - 10 seconds - 30 points
+    #mission5_StructureFloor()
+    
+    #Align at square 8.5 from Left - 11 seconds - 30 points
+    mission8_Silo()
     
     #Align at square 6 from left - 25 seconds - 40 points
     #mission10_Scale_Down()
