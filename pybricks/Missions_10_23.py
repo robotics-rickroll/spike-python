@@ -70,18 +70,19 @@ def missions12_Ship_Push():
 
 #Align at square 7.5 - ?? seconds
 def missions12_Ship_Scale_Roof():
-    move_straight_gyro(550, DriveSpeed.RETURN)
-    move_straight_gyro(135, DriveSpeed.PUSHING)
+    move_straight_gyro(500, DriveSpeed.RETURN)
+    wait(200)
+    move_straight_gyro(100, DriveSpeed.APPROACH)
     wait(200)
     move_straight_gyro(-50, DriveSpeed.RETURN)
-    spin_turn(-53, TurnSpeed.STANDARD)
-    move_straight_gyro(400, DriveSpeed.RETURN)
+    spin_turn(-46, TurnSpeed.STANDARD)
+    move_straight_gyro(420, DriveSpeed.RETURN)
     move_straight_gyro(120, DriveSpeed.APPROACH)
     left_arm_down(200, ArmSpeed.QUICK)
     left_arm_up(200, ArmSpeed.QUICK)
-    move_straight_gyro(220, DriveSpeed.APPROACH)
-    spin_turn(90, TurnSpeed.STANDARD)
-    move_straight_gyro(190, DriveSpeed.APPROACH)
+    move_straight_gyro(200, DriveSpeed.APPROACH)
+    spin_turn(80, TurnSpeed.STANDARD)
+    move_straight_gyro(210, DriveSpeed.APPROACH)
     wait(200)
     move_straight_gyro(-120, DriveSpeed.PRECISE)
     turn(-45, TurnSpeed.PRECISE)
@@ -393,7 +394,7 @@ if __name__ == "__main__":
     #Align at square 7.5 - 12 seconds - 10 points
     #missions12_Ship_Push()
     #Align at square 7.5 - 17 seconds - 60 points
-    #missions12_Ship_Scale_Roof()
+    missions12_Ship_Scale_Roof()
 
     #******************
     # Right Side Missions - 80 seconds without attachment change or alignments
@@ -410,7 +411,7 @@ if __name__ == "__main__":
     #mission5_StructureFloor()
     
     #Align at square 7.5 from Left - 17 seconds - 30 points
-    mission8_Silo_Market_Structure()
+    #mission8_Silo_Market_Structure()
     
     #Align at square 6 from left - 25 seconds - 40 points
     #mission10_Scale_Down()
